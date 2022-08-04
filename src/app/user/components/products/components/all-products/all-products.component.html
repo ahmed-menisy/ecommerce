@@ -1,0 +1,23 @@
+<app-header></app-header>
+<main class="container">
+  <section class="py-5">
+    <app-select-option
+      [title]="'Categories'"
+      [data]="categoriesName"
+      (selectedValue)="filterCategories($event)"
+    ></app-select-option>
+    <div class="products-data mt-4" *ngIf="!isLoding; else loading">
+      <div class="row gy-3">
+        <div
+          *ngFor="let product of products; trackBy: trackByProd"
+          class="col-sm-6 col-md-4 col-lg-3"
+        >
+          <app-item [data]="product" (item)="addToCart($event)"></app-item>
+        </div>
+      </div>
+    </div>
+  </section>
+  <ng-template #loading>
+    <app-loading></app-loading>
+  </ng-template>
+</main>

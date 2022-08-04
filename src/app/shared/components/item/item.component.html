@@ -1,0 +1,44 @@
+<div class="card product h-100">
+  <div class="image">
+    <img
+      [routerLink]="['/details', data.id]"
+      class="card-img-top w-100"
+      [src]="data.image"
+      [title]="data.title"
+      [alt]="data.title"
+    />
+  </div>
+  <div class="card-body">
+    <h3 class="card-title h5">{{ data.title }}</h3>
+    <p class="card-text text-muted small">
+      {{ data.description | overview: 8 }}
+    </p>
+  </div>
+  <div class="card-footer hstack justify-content-between">
+    <button
+      class="btn btn-sm btn-success"
+      *ngIf="!addButton"
+      (click)="addButton = true"
+    >
+      Add To Cart
+    </button>
+    <div class="input-group w-50" *ngIf="addButton">
+      <!-- <input  type="number"  class="form-control form-control-sm w-25" placeholder="Amount" [(ngModel)]="amount" /> -->
+      <select class="form-select form-select-sm" (change)="select($event)">
+        <option
+          [selected]="amount == i + 1 ? true : false"
+          *ngFor="let item of counter(30); let i = index"
+          [value]="i + 1"
+        >
+          {{ i + 1 }}
+        </option>
+      </select>
+      <button class="btn btn-success btn-sm" (click)="add(); addButton = false">
+        Add
+      </button>
+    </div>
+    <p class="text-bg-danger px-1 rounded">
+      {{ data.price | currency: "USD":"symbol" }}
+    </p>
+  </div>
+</div>

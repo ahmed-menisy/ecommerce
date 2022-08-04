@@ -1,0 +1,8 @@
+.card.product img {
+   aspect-ratio: 3/3;
+   cursor: pointer;
+ }
+ input[type=number]::-webkit-inner-spin-button , input[type=number]::-webkit-outer-spin-button{
+  appearance: none;
+  display: none;
+ }

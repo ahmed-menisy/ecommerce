@@ -1,0 +1,11 @@
+:host {
+   .nav-link {
+      &.active {
+         color: #09c;
+         font: {
+            weight:700;
+         }
+         letter-spacing: 1px;
+      }
+   }
+}
